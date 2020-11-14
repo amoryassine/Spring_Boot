@@ -14,9 +14,6 @@ import com.yassine.voiture.entities.Voiture;
 import com.yassine.voiture.service.VoitureService;
 
 
-
-
-
 @Controller
 public class VoitureController {
 	@Autowired

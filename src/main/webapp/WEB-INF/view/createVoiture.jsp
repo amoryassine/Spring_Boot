@@ -53,7 +53,7 @@
 
 <div class="form-group">
 <label class="control-label">date creation voiture :</label>
-<input type="text" name="date_creation_voiture" class="form-control"/>
+<input type="date" name="date_creation_voiture" class="form-control"/>
 </div>
 <div>
 <button type="submit" class="btn btn-primary">Save</button>
