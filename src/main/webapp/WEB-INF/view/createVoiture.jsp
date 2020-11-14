@@ -47,13 +47,13 @@
 
 <div class="form-group">
 <label class="control-label">prix par heure :</label>
-<input type="number" name="prix_par_heure" class="form-control"/>
+<input type="text" name="prix_par_heure" class="form-control"/>
 </div>
 
 
 <div class="form-group">
 <label class="control-label">date creation voiture :</label>
-<input type="date" name="date_creation_voiture" class="form-control"/>
+<input type="text" name="date_creation_voiture" class="form-control"/>
 </div>
 <div>
 <button type="submit" class="btn btn-primary">Save</button>
