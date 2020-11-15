@@ -47,11 +47,50 @@ public class VoitureController {
 		}
 	
 
-	  @RequestMapping("/ListeVoiture")
+	  @RequestMapping("/listeVoiture")
 	  public String ListeVoiture(ModelMap modelMap){
 	  List<Voiture> v = voitureService.getAllVoiture();
 	  modelMap.addAttribute("voiture", v);
 	  return "listeVoiture";
 	  }
+	  
+	  
+	   
+	   @RequestMapping({"/supprimerVoiture"})
+	   public String supprimerVoiture(@RequestParam("id") Long id,
+	   ModelMap modelMap)
+	   {
+		   voitureService.deleteVoitureById(id);
+	   List<Voiture> v = voitureService.getAllVoiture();
+	   modelMap.addAttribute("voiture", v);
+	   return "listeVoiture";
+	   }
+	   
+	   
+	    @RequestMapping({"/modifierVoiture"})
+	    public String editerVoiture(@RequestParam("id") Long id, ModelMap modelMap) {
+	        Voiture v = voitureService.getVoiture(id);
+	        modelMap.addAttribute("voiture",v);
+	        return "editerVoiture";
+	    }
+	    
+	    @RequestMapping({"/updateVoiture"})
+	    public String updateVoiture(@ModelAttribute("voiture") Voiture voiture,
+	    							@RequestParam("date") String date,
+	    							ModelMap modelMap) throws ParseException {
+	    	
+	        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+	        Date date_creation_voiture = dateformat.parse(String.valueOf(date));
+	        voiture.setDate_creation_voiture(date_creation_voiture);
+	        
+	        voitureService.updateVoiture(voiture);
+	        List<Voiture> v = voitureService.getAllVoiture();
+	        modelMap.addAttribute("Voiture", v);
+	        return "listeVoiture";
+	    }
+	    
+
+
+	    
 	
 }
