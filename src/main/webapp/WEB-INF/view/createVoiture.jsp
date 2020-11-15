@@ -15,7 +15,7 @@
 <body>
 <div class="container">
 <div class="card-body">
-<form action="saveVoiture" method="post">
+<form action="saveVoiture" method="POST">
 <div class="form-group">
 <label class="control-label">Marque voiture :</label>
 <input type="text" name="marque" class="form-control"/>
@@ -63,7 +63,7 @@
 ${msg}
 <br/>
 <br/>
-<a href="ListeVoiture">Liste Voiture</a>
+<a href="listeVoiture">Liste Voiture</a>
 </div>
 </body>
 </html>
