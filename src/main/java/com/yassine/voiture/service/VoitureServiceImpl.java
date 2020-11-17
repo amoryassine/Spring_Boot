@@ -3,7 +3,8 @@ package com.yassine.voiture.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 
@@ -44,6 +45,10 @@ public class VoitureServiceImpl implements VoitureService {
 	@Override
 	public List<Voiture> getAllVoiture() {
 		return voitureRepository.findAll();
+	}
+	@Override
+	public Page<Voiture> getAllVoitureParPage(int page, int size) {
+	return voitureRepository.findAll(PageRequest.of(page, size));
 	}
 	
 	

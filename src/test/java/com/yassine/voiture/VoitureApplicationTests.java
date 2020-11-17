@@ -6,11 +6,11 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-
+import org.springframework.data.domain.Page;
 
 import com.yassine.voiture.entities.Voiture;
 import com.yassine.voiture.repos.VoitureRepository;
+import com.yassine.voiture.service.VoitureService;
 
 
 @SpringBootTest
@@ -18,6 +18,8 @@ class VoitureApplicationTests {
 
 	@Autowired
 	private VoitureRepository voitureRepository ;
+	@Autowired
+	private VoitureService voitureService ;
 
 	@Test
 	public void testCreateVoiture() {
@@ -50,6 +52,19 @@ class VoitureApplicationTests {
 		
 	System.out.println(i);
 		}
+	}
+	
+	@Test
+	public void testFindBymarqueVoitureContains()
+	{
+	Page<Voiture> v = voitureService.getAllVoitureParPage(0,2);
+	System.out.println(v.getSize());
+
+	System.out.println(v.getTotalElements());
+	System.out.println(v.getTotalPages());
+	v.getContent().forEach(p -> {System.out.println(p.toString());
+	});
+
 	}
 	
 	

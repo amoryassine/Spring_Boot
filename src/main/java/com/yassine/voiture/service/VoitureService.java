@@ -2,6 +2,8 @@ package com.yassine.voiture.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.yassine.voiture.entities.Voiture;
 
 public interface VoitureService {
@@ -21,6 +23,7 @@ public interface VoitureService {
 
 	
 	List<Voiture> getAllVoiture();
+	Page<Voiture> getAllVoitureParPage(int page, int size);
 
 
 	
