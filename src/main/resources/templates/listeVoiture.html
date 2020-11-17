@@ -28,6 +28,13 @@ Liste des Voiture
 <td th:text="${v.prix_par_heure}"></td>
 </tr>
 </table>
+<ul class="nav nav-pills">
+<li th:each="page,status:${pages}">
+<a th:class="${status.index==currentPage?'btn btn-primary':'btn' }"
+th:href="@{listeVoiture(page=${status.index}, size=${size} ) }"
+th:text="${status.index }"></a>
+</li>
+</ul>
 </div>
 </div>
 </div>
