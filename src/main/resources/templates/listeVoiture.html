@@ -18,7 +18,7 @@ Liste des Voiture
 </tr>
 
 
-<tr th:each="v:${voiture}">
+<tr th:each="v:${voiture.content}">
 <td th:text="${v.idvoiture}"></td>
 <td th:text="${v.marque}"></td>
 <td th:text="${v.modele}"></td>

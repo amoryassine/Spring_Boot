@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.data.domain.Page;
 
 import com.yassine.voiture.entities.Voiture;
 import com.yassine.voiture.service.VoitureService;
@@ -47,10 +48,17 @@ public class VoitureController {
 		}
 	
 
+	  
 	  @RequestMapping("/listeVoiture")
-	  public String ListeVoiture(ModelMap modelMap){
-	  List<Voiture> v = voitureService.getAllVoiture();
+	  public String ListeVoiture(ModelMap modelMap,
+			  								@RequestParam (name="page",defaultValue = "0") int page,
+			  								@RequestParam (name="size", defaultValue = "2") int size)
+	  {
+		  
+	  Page<Voiture> v = voitureService.getAllVoitureParPage(page, size);
 	  modelMap.addAttribute("voiture", v);
+	  modelMap.addAttribute("pages", new int[v.getTotalPages()]);
+	  modelMap.addAttribute("currentPage", page);
 	  return "listeVoiture";
 	  }
 	  
