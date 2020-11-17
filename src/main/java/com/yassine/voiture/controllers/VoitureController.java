@@ -64,15 +64,26 @@ public class VoitureController {
 	  
 	  
 	   
-	   @RequestMapping({"/supprimerVoiture"})
+
+	   
+	   @RequestMapping("/supprimerVoiture") 
 	   public String supprimerVoiture(@RequestParam("id") Long id,
-	   ModelMap modelMap)
-	   {
+			   							ModelMap modelMap,
+			   							@RequestParam (name="page",defaultValue = "0") int page,
+			   							@RequestParam (name="size", defaultValue = "2") int size)
+			   {
 		   voitureService.deleteVoitureById(id);
-	   List<Voiture> v = voitureService.getAllVoiture();
-	   modelMap.addAttribute("voiture", v);
-	   return "listeVoiture";
-	   }
+			   Page<Voiture> v = voitureService.getAllVoitureParPage(page, size);
+			   modelMap.addAttribute("voiture", v);
+			   modelMap.addAttribute("pages", new int[v.getTotalPages()]);
+			   modelMap.addAttribute("currentPage", page);
+			   modelMap.addAttribute("size", size);
+			   return "listeVoiture";
+			   }
+	   
+	   
+	   
+	   
 	   
 	   
 	    @RequestMapping({"/modifierVoiture"})
