@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
 
@@ -22,6 +23,9 @@ public class Voiture {
 	private String puissance_fiscale;
 	private Double prix_par_heure ;
 	private Date date_creation_voiture;
+	
+	@ManyToOne
+	private Location location;
 	
 
 	public Voiture() {
