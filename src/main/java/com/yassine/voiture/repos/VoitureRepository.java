@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.yassine.voiture.entities.Location;
 import com.yassine.voiture.entities.Voiture;
-
+@RepositoryRestResource(path = "rest")
 public interface VoitureRepository extends JpaRepository<Voiture, Long> {
 	
 	
@@ -20,7 +21,7 @@ public interface VoitureRepository extends JpaRepository<Voiture, Long> {
 	@Query("select v from Voiture v where v.location = ?1") 
 	List<Voiture> findByLocation (Location location);
 	
-	List<Voiture> findByLocationidlocation(Long id);
+	List<Voiture> findByLocationidlocation( Long id);
 	
 	List<Voiture> findByOrderBymarqueVoitureAsc();
 	
