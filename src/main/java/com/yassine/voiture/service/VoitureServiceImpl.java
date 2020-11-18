@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-
+import com.yassine.voiture.entities.Location;
 import com.yassine.voiture.entities.Voiture;
 import com.yassine.voiture.repos.VoitureRepository;
 
@@ -51,6 +51,36 @@ public class VoitureServiceImpl implements VoitureService {
 	return voitureRepository.findAll(PageRequest.of(page, size));
 	}
 	
+	@Override
+	public List<Voiture> findBymarque(String marque) {
+	return ((VoitureServiceImpl) voitureRepository).findBymarque(marque);
+	}
+	
+	@Override 
+	public List<Voiture> findBymarqueContains(String marque) {
+		return ((VoitureServiceImpl) voitureRepository).findBymarqueContains(marque);
+		}
+	
+	@Override
+	public List<Voiture> findBymodele(String marque, String modele) {
+		return voitureRepository.findBymodele(marque, modele);
+	}
+	@Override
+	public List<Voiture> findByLocation(Location location) {
+	return voitureRepository.findByLocation(location);
+	}
+	@Override
+	public List<Voiture> findByLocationidlocation(Long id) {
+	return voitureRepository.findByLocationidlocation(id);
+	}
+	@Override
+	public List<Voiture> findByOrderBymarqueVoitureAsc() {
+	return voitureRepository.findByOrderBymarqueVoitureAsc();
+	}
+	@Override
+	public List<Voiture> trierVoituremarquemodele() {
+	return voitureRepository.trierVoituremarquemodele();
+	}
 	
 	
 

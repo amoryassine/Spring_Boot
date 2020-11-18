@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 
+import com.yassine.voiture.entities.Location;
 import com.yassine.voiture.entities.Voiture;
 
 public interface VoitureService {
@@ -25,6 +26,13 @@ public interface VoitureService {
 	List<Voiture> getAllVoiture();
 	Page<Voiture> getAllVoitureParPage(int page, int size);
 
+	List<Voiture> findBymarque(String marque);
+	List<Voiture> findBymarqueContains(String marque);
+	List<Voiture> findBymodele (String marque, String modele);
+	List<Voiture> findByLocation (Location location);
+	List<Voiture> findByLocationidlocation(Long id);
+	List<Voiture> findByOrderBymarqueVoitureAsc();
+	List<Voiture> trierVoituremarquemodele();
 
 	
 

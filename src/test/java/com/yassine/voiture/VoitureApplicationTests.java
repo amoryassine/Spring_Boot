@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 
+import com.yassine.voiture.entities.Location;
 import com.yassine.voiture.entities.Voiture;
 import com.yassine.voiture.repos.VoitureRepository;
 import com.yassine.voiture.service.VoitureService;
@@ -68,7 +69,73 @@ class VoitureApplicationTests {
 	}
 	
 	
+	@Test
+	public void testfindBymarqueVoiture(){
+		
+	List<Voiture> v = voitureRepository.findBymarqueVoiture("peugeot");
 	
+	for (Voiture p : v){
+	System.out.println(p);
+	}
+	}
+	
+	
+	@Test
+	public void testfindBymarqueVoitureContains(){
+		
+	List<Voiture> v=voitureRepository.findBymarqueVoitureContains("peugeot");
+	
+	for (Voiture p : v){
+	System.out.println(p);
+	} }
+	
+	
+
+	
+		@Test
+		public void testfindByCategorie(){
+			
+		Location l = new Location();
+		l.setIdlocation(1L);
+		List<Voiture> v = voitureRepository.findByLocation(l);
+		for (Voiture p : v)
+		{
+		System.out.println(p);
+		}
+		}
+		
+		
+		@Test
+		public void findByCategorieIdCat()
+		{
+		List<Voiture> v = voitureRepository.findByLocationidlocation(1L);
+		for (Voiture p : v)
+		{
+		System.out.println(p);
+		}
+		}
+		
+		
+		
+		@Test
+		public void testfindByOrderBymarqueVoitureAsc()
+		{
+		List<Voiture> v = voitureRepository.findByOrderBymarqueVoitureAsc();
+		for (Voiture p : v)
+		{
+		System.out.println(p);
+		}
+		}
+		
+		
+		@Test public void testtrierVoituremarquemodele()
+		{
+		List<Voiture> v = voitureRepository.trierVoituremarquemodele();
+		for (Voiture p : v)
+		{
+		System.out.println(p);
+		}
+		}
 	
 	
 	
